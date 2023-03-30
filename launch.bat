@@ -1,4 +1,11 @@
 @echo off
+cls
+
+if "%1" == "" (
+    set file=main
+) else (
+    set file=%1
+)
 
 if not exist .\bin\ (
     call :fail .\bin\ is missing
@@ -12,14 +19,14 @@ if not exist .\src\ (
     call :fail .\src\ is missing
 )
 
-if not exist .\src\main.lua (
-    call :fail .\src\main.lua is missing
+if not exist .\src\%file%.lua (
+    call :fail .\src\%file%.lua is missing
 )
 
 call :run
 
 :run
-.\bin\luajit.exe .\src\main.lua
+.\bin\luajit.exe .\src\%file%.lua
 goto out
 
 :fail
@@ -30,4 +37,5 @@ endlocal
 
 :out
 pause
+cls
 exit
