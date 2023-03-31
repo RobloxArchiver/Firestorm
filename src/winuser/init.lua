@@ -1,1 +1,3 @@
-return {}
+return {
+    class = require("./data.lua")
+}
