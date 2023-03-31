@@ -39,11 +39,26 @@ function firestorm.createGame(_self)
 end
 
 function firestorm.game(gameData)
-	 local self = {}
-	 
-	 
-	 
-	 return self
+    local self = {}
+ 
+    function self.createOption(options)
+        local self = {}
+        self.options = {}
+
+        for flag, option in pairs(options) do
+            self.options[flag] = option
+        end
+
+        function self.getOption(flag)
+            if self.options[idx] then
+                return self.options[flag]
+            end
+        end
+
+        return self
+    end
+ 
+    return self
 end
 
 local newGame = firestorm.createGame({name = "TEST", version = "v6.9.6.9", savePath = "./hello_world"})
