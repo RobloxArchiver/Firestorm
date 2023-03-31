@@ -1,3 +1,3 @@
 return {
-    class = require("./data.lua")
+    data = require("./data.lua")
 }
