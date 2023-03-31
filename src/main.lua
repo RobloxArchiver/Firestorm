@@ -41,16 +41,33 @@ function firestorm.game(gameData)
  
     function self.createOptions(options)
         local self = {}
-        self.options = {}
 
         for flag, option in pairs(options) do
-            self.options[flag] = option
+            self[flag] = { text = option, flag = flag }
         end
 
         function self:getOption(flag)
-            if self.options[idx] then
-                return self.options[flag]
+            if self[flag] then
+                return self[flag]
             end
+        end
+		
+		for flag, tab in pairs(self) do
+			if type(v) == "table" then
+				
+			end
+		end
+
+		function self:getOptions()
+            local pack = {}
+			
+			for name, value in pairs(self) do
+				if type(v) == "table" then
+					pack[name] = value
+				end
+			end
+			
+			return pack
         end
 
         return self
@@ -63,8 +80,8 @@ local myData = firestorm.data({name = "TEST", version = "v6.9.6.9", savePath = "
 local gameMain = firestorm.game(myData)
 
 local options = gameMain.createOptions({
-	["flag1"] = "Welcome to Firestorm",
-	["firestormFramework"] = "Firestorm is BAD!" 
+    ["flag1"] = "Welcome to Firestorm",
+    ["firestormFramework"] = "Firestorm is BAD!" 
 })
 
-print(options:getOption("firestormFramework"))
+print(options:getOption("flag1"))
