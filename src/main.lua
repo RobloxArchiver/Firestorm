@@ -14,34 +14,36 @@ firestorm = {}
 
 firestorm.defaultPath = "./firestorm_game_data/"
 
-firestorm.createGame(_self)
-    local ret = {}
+function firestorm.createGame(_self)
+    local self = {}
     
-    ret.gameData = {
+    self.gameData = {
         name = _self.name or "Firestorm",
         version = _self.version or "0.0.0",
         savePath = _self.savePath or firestorm.defaultPath
     }
     
-    function ret.GameName()
-        return ret.name
+    function self.getName()
+        return self.gameData.name
     end
     
-    function ret.GameVersion()
-        return ret.version
+    function self.getVersion()
+        return self.gameData.version
     end
     
-    function ret.getSavePath()
-        return ret.savePath
+    function self.getSavePath()
+        return self.gameData.savePath
     end
     
-    return ret
+    return self
 end
 
-local newGame = firestorm.createGame({gameName = "TEST", gameVersion = "v6.9.6.9", "./hello_world"})
-
-for i, v in pairs(newGame) do
-    if type(v) == "function" then
-        print(v())
-    end
+function firestorm.game(gameData)
+	 local self = {}
+	 
+	 
+	 
+	 return self
 end
+
+local newGame = firestorm.createGame({name = "TEST", version = "v6.9.6.9", savePath = "./hello_world"})
