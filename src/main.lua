@@ -1,11 +1,10 @@
-local ffi = require("ffi")
+--[[
 
-ffi.cdef([[
-    int MessageBoxA(void *w, const char *txt, const char *cap, int type);
-]])
+    Goals/Roadmap:
 
-function TextBox(text, title)
-    ffi.C.MessageBoxA(nil, text, title, 0)
-end
+    1: Simple Textbased Adventure Game "Framework"
+    2: Keeping it all to one file, or at least just one library
+    3: Using LuaJIT to an advantage
+    4: ZeroBraneStudio Debugging and Support
 
-TextBox("Hail Hydra", " 🙏 ")
+]]
