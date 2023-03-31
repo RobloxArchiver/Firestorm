@@ -14,25 +14,23 @@ firestorm = {}
 
 firestorm.defaultPath = "./firestorm_game_data/"
 
-function firestorm.createGame(_self)
-    local self = {}
-    
-    self.gameData = {
+function firestorm.data(_self)
+    local self = {
         name = _self.name or "Firestorm",
         version = _self.version or "0.0.0",
         savePath = _self.savePath or firestorm.defaultPath
     }
     
-    function self.getName()
-        return self.gameData.name
+    function self:getName()
+        return self.name
     end
     
-    function self.getVersion()
-        return self.gameData.version
+    function self:getVersion()
+        return self.version
     end
     
-    function self.getSavePath()
-        return self.gameData.savePath
+    function self:getSavePath()
+        return self.savePath
     end
     
     return self
@@ -41,7 +39,7 @@ end
 function firestorm.game(gameData)
     local self = {}
  
-    function self.createOption(options)
+    function self.createOptions(options)
         local self = {}
         self.options = {}
 
@@ -49,7 +47,7 @@ function firestorm.game(gameData)
             self.options[flag] = option
         end
 
-        function self.getOption(flag)
+        function self:getOption(flag)
             if self.options[idx] then
                 return self.options[flag]
             end
@@ -61,4 +59,12 @@ function firestorm.game(gameData)
     return self
 end
 
-local newGame = firestorm.createGame({name = "TEST", version = "v6.9.6.9", savePath = "./hello_world"})
+local myData = firestorm.data({name = "TEST", version = "v6.9.6.9", savePath = "./hello_world"})
+local gameMain = firestorm.game(myData)
+
+local options = gameMain.createOptions({
+	["flag1"] = "Welcome to Firestorm",
+	["firestormFramework"] = "Firestorm is BAD!" 
+})
+
+print(options:getOption("firestormFramework"))
